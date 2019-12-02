@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+        
+    <!-- Favicon provided by Hexagon Social Media through https://www.iconfinder.com/icons/243027/livejournal_pencil_social_social_media_write_writing_icon -->
+    <!-- Under Creative Commons License (Attribution 2.5 Generic) -->
+    <link rel="icon" href="./favicon.ico">
+
+    <title>
+        Results
+    </title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+
+    <link href="./css/result.css" rel="stylesheet">
+
+    <script src="./js/analysis/directionIndicators.js"></script>
+    <script src="./js/primary.js"></script>
+
+    <script type="text/javascript" src="./js/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+            ['Directional Indicator', 'Usage percentage'],
+            ['Additive', indicatorCounts[0]],
+            ['Sequential', indicatorCounts[1]],
+            ['Causal', indicatorCounts[2]],
+            ['Oppositional', indicatorCounts[3]]
+            ]);
+            var options = {
+                title: 'Directional Indicator Breakdown',
+                titleTextStyle: {
+                    fontSize: 14
+                },
+                colors: [
+                    additiveColor, sequentialColor, causalColor, oppositionalColor
+                ],
+                legend: {
+                    position: 'right'
+                }
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+    }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            performAnalysis()
+        })
+    </script>
+</head>
+    <div class="container">
+        <div class="fixed">
+            <pre id="content" class="boxed">
+                <p>
+                    Error
+                </p>
+            </pre>
+        </div>
+        <div class="flex-item">
+            <div class="sticky-top sticky-fix">
+                <div class="boxed" id="piechart"></div>
+                <div class="boxed" id="other">
+                    <p class="font-weight-bold">todo: results...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<body>
+
+</body>
